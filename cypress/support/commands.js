@@ -1,18 +1,32 @@
 // ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
+
+import loginPage from "../pageObjects/LoginPage.cy";
+import productPage from "../pageObjects/ProductPage.cy";
+Cypress.Commands.add('login', (email, password) => {
+    const loginObj=new loginPage()
+    loginObj.userLogin(email,password)
+
+})
+
+Cypress.Commands.add('AddToCart',(targetProductID)=>{
+    const uniqueProductIds = new Set();
+    //const targetProductID=['16','33'];
+    const productObj=new productPage()
+
+    productObj.provideAddToCartDetails().each(($el)=>{
+
+        const productId = $el.attr('data-product-id');
+        
+                  
+        if(targetProductID.includes(productId)&& !uniqueProductIds.has(productId)){
+            uniqueProductIds.add(productId);
+           
+            cy.wrap($el).first().click({force:true})
+            productObj.clickContinueLink()
+        }
+      
+    })
+})
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
