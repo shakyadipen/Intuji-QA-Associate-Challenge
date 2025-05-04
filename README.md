@@ -3,7 +3,7 @@ This is a cypress test automation project designed for ecommerce application.
 #Setup and Installation Guidelines
 To run the tests from this repo on your local machine, first make sure your machine meets the Cypress System Requirements, including the installation of Node.js according to the version specified in the file .node-version.
 Executing the following instructions will clone the repository, install dependencies and run Cypress:
-git clone https://github.com/cypress-io/Cypress\Intuji-QA-Associate-Challenge.git
+git clone https://github.com/Cypress\Intuji-QA-Associate-Challenge.git
 cd Cypress\Intuji-QA-Associate-Challenge
 
 npm run local:run # run Cypress headlessly
@@ -16,4 +16,11 @@ Then in a separate terminal window execute either
 npx cypress run # for headless mode
 or
 npx cypress open # for headed interactive mode
+#In the terminal window of your project executes these:
+-----npm install mochawesome --save-dev
+-----npm install mochawesome-merge --save-dev
+--This will install the plugins and dependencies for Mochawesome report.
+#Tools and Plugins Used
+-Mochaawesome for generating report
+-Faker.js for generating the data
 
